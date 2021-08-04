@@ -45,7 +45,7 @@ void setup() {
   int am2 = data2.parseInts(ints);  // раскидает в указанный массив и вернёт количество
   // фактически тут am2 == data2.amount() - количество данных
   // выводим
-  for (byte i = 0; i < am; i++) Serial.println(ints[i]);
+  for (byte i = 0; i < am2; i++) Serial.println(ints[i]);
 }
 
 void loop() {
