@@ -24,6 +24,16 @@ parseBytes	KEYWORD2
 buf	KEYWORD2
 str	KEYWORD2
 
+GP_splitList	KEYWORD2
+GP_inList	KEYWORD2
+GP_numToChar	KEYWORD2
+GP_floatToChar	KEYWORD2
+GP_charToNum	KEYWORD2
+GP_charToFloat	KEYWORD2
+GP_numFromList	KEYWORD2
+GP_listToNum	KEYWORD2
+GP_decodeColor	KEYWORD2
+
 #######################################
 # Constants (LITERAL1)
 #######################################

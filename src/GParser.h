@@ -15,10 +15,12 @@
 
     Версии:
     v1.0 - релиз
+    v1.1 - добавлены отдельные инструменты для парсинга
 */
 
-#ifndef GParser_h
-#define GParser_h
+#ifndef _GParser_h
+#define _GParser_h
+#include "parseUtils.h"
 
 class GParser {
 public:

@@ -1,4 +1,4 @@
-[![Foo](https://img.shields.io/badge/Version-1.0-brightgreen.svg?style=flat-square)](#versions)
+[![Foo](https://img.shields.io/badge/Version-1.1-brightgreen.svg?style=flat-square)](#versions)
 [![Foo](https://img.shields.io/badge/Website-AlexGyver.ru-blue.svg?style=flat-square)](https://alexgyver.ru/)
 [![Foo](https://img.shields.io/badge/%E2%82%BD$%E2%82%AC%20%D0%9D%D0%B0%20%D0%BF%D0%B8%D0%B2%D0%BE-%D1%81%20%D1%80%D1%8B%D0%B1%D0%BA%D0%BE%D0%B9-orange.svg?style=flat-square)](https://alexgyver.ru/support_alex/)
 
@@ -44,6 +44,7 @@ GParser (char* data, char newDiv = ',');
 
 <a id="usage"></a>
 ## Использование
+### Класс GParser
 ```cpp
 void setDiv(char newDiv);       // указать символ разделитель
 void clear();                   // освободить буфер
@@ -54,6 +55,38 @@ float getFloat(int num);        // получить float из выбранно�
 bool equals(int num, const char* comp); // сравнить подстроку с другой строкой
 int parseInts(int* data);       // распарсить на инты
 int parseBytes(byte* data);     // распарсить на байты
+```
+
+### Отдельные функции парсинга
+См. пример **testUtils**
+
+```cpp
+// разделить список list с разделителем div на подстроки (см. пример)
+char* GP_splitList(char* list, char div = ',');
+
+// получить номер, под которым name входит в list с разделителем div. -1 если не входит
+int8_t GP_inList(char* name, char* list, char div = ',');
+
+// преобразовать int в строку (работает в 3-10 раз быстрее ltoa + основание)
+void GP_numToChar(int32_t n, char* buf, uint8_t base);
+
+// преобразовать float в строку
+void GP_floatToChar(double f, char *buf, uint8_t decimals);
+
+// преобразовать строку в число
+int32_t GP_charToNum(char* buf, uint8_t base);
+
+// преобразовать строку в float
+double GP_charToFloat(char* buf);
+
+// получить число под индексом idx в списке list с разделителем div
+int GP_numFromList(char* list, int idx, char div = ',');
+
+// переписать список list с разделителем div в массив чисел data размером size
+uint8_t GP_listToNum(char* list, int* data, uint8_t size, char div = ',');
+
+// преобразовать текстовый цвет (0x, #) в число
+uint32_t GP_decodeColor(char* hex);
 ```
 
 <a id="example"></a>
@@ -118,6 +151,7 @@ void loop() {
 <a id="versions"></a>
 ## Версии
 - v1.0
+- v1.1 - добавлены отдельные инструменты для парсинга
 
 <a id="feedback"></a>
 ## Баги и обратная связь
