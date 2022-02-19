@@ -1,4 +1,4 @@
-[![Foo](https://img.shields.io/badge/Version-1.1-brightgreen.svg?style=flat-square)](#versions)
+[![Foo](https://img.shields.io/badge/Version-1.2-brightgreen.svg?style=flat-square)](#versions)
 [![Foo](https://img.shields.io/badge/Website-AlexGyver.ru-blue.svg?style=flat-square)](https://alexgyver.ru/)
 [![Foo](https://img.shields.io/badge/%E2%82%BD$%E2%82%AC%20%D0%9D%D0%B0%20%D0%BF%D0%B8%D0%B2%D0%BE-%D1%81%20%D1%80%D1%8B%D0%B1%D0%BA%D0%BE%D0%B9-orange.svg?style=flat-square)](https://alexgyver.ru/support_alex/)
 
@@ -61,6 +61,9 @@ int parseBytes(byte* data);     // распарсить на байты
 См. пример **testUtils**
 
 ```cpp
+// количество подстрок в списке list с разделителем div
+uint8_t GP_listSize(char* list, char div = ',');
+
 // разделить список list с разделителем div на подстроки (см. пример)
 char* GP_splitList(char* list, char div = ',');
 
@@ -152,6 +155,7 @@ void loop() {
 ## Версии
 - v1.0
 - v1.1 - добавлены отдельные инструменты для парсинга
+- v1.2 - добавлены ещё инструменты для парсинга
 
 <a id="feedback"></a>
 ## Баги и обратная связь

@@ -1,6 +1,9 @@
 #pragma once
 #include <Arduino.h>
 
+// количество подстрок в списке list с разделителем div
+uint8_t GP_listSize(char* list, char div = ',');
+
 // разделить список list с разделителем div на подстроки (см. пример)
 char* GP_splitList(char* list, char div = ',');
 

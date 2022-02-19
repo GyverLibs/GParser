@@ -1,5 +1,12 @@
 #include "parseUtils.h"
 
+// количество подстрок в списке list с разделителем div
+uint8_t GP_listSize(char* list, char div = ',') {
+    uint16_t i = 0, count = 0;
+    while (list[i++]) if (list[i] == div) count++;
+    return ++count;
+}
+
 // разделить список list с разделителем div на подстроки
 char* GP_splitList(char* list, char div) {
     static uint8_t prev, end;
