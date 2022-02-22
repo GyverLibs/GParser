@@ -16,6 +16,8 @@
     Версии:
     v1.0 - релиз
     v1.1 - добавлены отдельные инструменты для парсинга
+    v1.2 - добавлены ещё инструменты для парсинга
+    v1.3 - добавлена возможность восстановить строку
 */
 
 #ifndef _GParser_h
@@ -46,25 +48,30 @@ public:
     // количество разделённых данных в пакете
     int amount() {
         int i = 0, count = 0;
-        while (buf[i++]) if (buf[i] == div) count++;  // подсчёт разделителей
+        while (buf[i]) if (buf[i++] == div) count++;  // подсчёт разделителей
         return ++count;
     }
     
     // разделить строку на подстроки
     int split() {
-        int am = amount();            // количество данных
-        clear();                      // освобождаем буфер
-        str = (char**)malloc(am * sizeof(char*)); // создаём буфер
-        str[0] = buf;                 // строка 0
-        int i = 0, j = 0;             // счётчики
-        while (buf[i]) {              // пока не NULL
-            if (buf[i] == div) {        // если разделитель
-                buf[i] = '\0';            // меняем на NULL
-                str[++j] = buf + i + 1;   // запоминаем начало строки
+        len = amount();                     // количество данных
+        clear();                            // освобождаем буфер
+        str = (char**)malloc(len * sizeof(char*)); // создаём буфер
+        str[0] = buf;                       // строка 0
+        int i = 0, j = 0;                   // счётчики
+        while (buf[i]) {                    // пока не NULL
+            if (buf[i] == div) {            // если разделитель
+                buf[i] = '\0';              // меняем на NULL
+                str[++j] = buf + i + 1;     // запоминаем начало строки
             }
             i++;
         }
-        return am;
+        return len;
+    }
+    
+    // восстановить строку (вернуть разделители)
+    void restore() {
+        for (int i = 0; i < len - 1; i++) str[i][strlen(str[i])] = div;
     }
     
     // получить инт из выбранной подстроки
@@ -117,6 +124,7 @@ public:
     
 private:
     char div;
+    int len;
 };
 
 #endif

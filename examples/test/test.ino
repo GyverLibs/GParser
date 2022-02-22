@@ -32,6 +32,8 @@ void setup() {
   if (data.equals(2, "hello")) Serial.println("true");
   else Serial.println("false");
   
+  data.restore();   // восстановить исходный вид строки (вернуть разделители)
+  
   Serial.println();
   
   // ==================== ПРИМЕР 2 ======================

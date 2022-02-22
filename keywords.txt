@@ -23,6 +23,7 @@ parseInts	KEYWORD2
 parseBytes	KEYWORD2
 buf	KEYWORD2
 str	KEYWORD2
+restore	KEYWORD2
 
 GP_listSize	KEYWORD2
 GP_splitList	KEYWORD2
