@@ -1,3 +1,5 @@
+This is an automatic translation, may be incorrect in some places. See sources and examples!
+
 # GParser
 A simple and fast parser for strings into separate substrings and numbers for Arduino
 - Works with the specified buffer (string), does not create its own
