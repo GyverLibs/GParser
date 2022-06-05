@@ -36,6 +36,11 @@ GP_numFromList	KEYWORD2
 GP_listToNum	KEYWORD2
 GP_decodeColor	KEYWORD2
 
+GP_urlencode	KEYWORD2
+GP_urldecode	KEYWORD2
+GP_uniencode	KEYWORD2
+GP_unistrlen	KEYWORD2
+
 #######################################
 # Constants (LITERAL1)
 #######################################

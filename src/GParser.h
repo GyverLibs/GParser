@@ -19,11 +19,14 @@
     v1.2 - добавлены ещё инструменты для парсинга
     v1.3 - добавлена возможность восстановить строку
     v1.3.1 - фикс warning
+    v1.4 - добавил url и unicode кодирование
 */
 
 #ifndef _GParser_h
 #define _GParser_h
 #include "parseUtils.h"
+#include "unicode.h"
+#include "url.h"
 
 class GParser {
 public:

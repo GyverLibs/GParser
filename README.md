@@ -1,4 +1,4 @@
-[![Foo](https://img.shields.io/badge/Version-1.3.1-brightgreen.svg?style=flat-square)](#versions)
+[![Foo](https://img.shields.io/badge/Version-1.4-brightgreen.svg?style=flat-square)](#versions)
 [![Foo](https://img.shields.io/badge/Website-AlexGyver.ru-blue.svg?style=flat-square)](https://alexgyver.ru/)
 [![Foo](https://img.shields.io/badge/%E2%82%BD$%E2%82%AC%20%D0%9D%D0%B0%20%D0%BF%D0%B8%D0%B2%D0%BE-%D1%81%20%D1%80%D1%8B%D0%B1%D0%BA%D0%BE%D0%B9-orange.svg?style=flat-square)](https://alexgyver.ru/support_alex/)
 
@@ -95,6 +95,25 @@ uint8_t GP_listToNum(char* list, int* data, uint8_t size, char div = ',');
 uint32_t GP_decodeColor(char* hex);
 ```
 
+### Unicode
+См. пример **testUnicode**
+
+```cpp
+char* GP_uniencode(int32_t c, char* s);     // код unicode в char[5]
+String GP_uniencode(uint16_t c);            // код unicode в String
+uint16_t GP_unistrlen(char* data);          // длина unicode строки в кол-ве символов
+```
+
+### Url encode/decode
+См. пример **testUrl**
+
+```cpp
+void GP_urlencode(const String& s, String& dest);       // urlencode из String в String
+String GP_urlencode(const String& s);                   // urlencode из String в String (возврат)
+String GP_urldecode(const String& s, String& dest);     // urldecode из String в String
+String GP_urldecode(const String& s);                   // urldecode из String в String (возврат)
+```
+
 <a id="example"></a>
 ## Пример
 Остальные примеры смотри в **examples**!
@@ -161,6 +180,7 @@ void loop() {
 - v1.2 - добавлены ещё инструменты для парсинга
 - v1.3 - добавлена возможность восстановить строку
 - v1.3.1 - фикс warning
+- v1.4 - добавил url и unicode кодирование
 
 <a id="feedback"></a>
 ## Баги и обратная связь
