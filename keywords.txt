@@ -21,6 +21,7 @@ getFloat	KEYWORD2
 equals	KEYWORD2
 parseInts	KEYWORD2
 parseBytes	KEYWORD2
+parseLongs	KEYWORD2
 buf	KEYWORD2
 str	KEYWORD2
 restore	KEYWORD2

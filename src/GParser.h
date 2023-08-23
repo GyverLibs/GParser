@@ -79,7 +79,7 @@ public:
     }
     
     // получить инт из выбранной подстроки
-    int16_t getInt(int num) {
+    int32_t getInt(int num) {
         return atol(str[num]);
     }
     
@@ -93,12 +93,25 @@ public:
         return !strcmp(str[num], comp);
     }
     
+    // распарсить на лонги
+    int parseLongs(long* data) {
+        int count = 0;
+        char* offset = buf;
+        while (true) {
+            data[count++] = atol(offset);
+            offset = strchr(offset, div);
+            if (offset) offset++;
+            else break;
+        }
+        return count;
+    }
+    
     // распарсить на инты
     int parseInts(int* data) {
         int count = 0;
         char* offset = buf;
         while (true) {
-            data[count++] = atoi(offset);
+            data[count++] = atol(offset);
             offset = strchr(offset, div);
             if (offset) offset++;
             else break;
