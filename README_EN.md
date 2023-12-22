@@ -1,164 +1,201 @@
 This is an automatic translation, may be incorrect in some places. See sources and examples!
 
-# GParser
-A simple and fast parser for strings into separate substrings and numbers for Arduino
-- Works with the specified buffer (string), does not create its own
-- Splits the string into substrings by the specified character
-- Allows you to access substrings, convert them to numbers and compare with strings
-- Access to substrings via []
-- Can parse a string into an array of int or byte
+# Gparser
+Simple and fast Parser lines in separate tunes and numbers for Arduino
+- works with the indicated buffer (line), does not create its own
+- shares the line for tuning according to the specified symbol
+- allows you to contact tunes, transfer them into numbers and compare with lines
+- Access to tunes through []
+- can rinse the line into the INT or BYTE array
 
-### Compatibility
-Compatible with all Arduino platforms (using Arduino functions)
+## compatibility
+Compatible with all arduino platforms (used arduino functions)
 
 ## Content
-- [Install](#install)
-- [Initialization](#init)
-- [Usage](#usage)
-- [Example](#example)
-- [Versions](#versions)
-- [Bugs and feedback](#feedback)
+- [installation] (# Install)
+- [initialization] (#init)
+- [use] (#usage)
+- [Example] (# Example)
+- [versions] (#varsions)
+- [bugs and feedback] (#fedback)
 
-<a id="install"></a>
+<a id="install"> </a>
 ## Installation
-- The library can be found by the name **GParser** and installed through the library manager in:
-    - Arduino IDE
-    - Arduino IDE v2
-    - PlatformIO
-- [Download library](https://github.com/GyverLibs/GParser/archive/refs/heads/main.zip) .zip archive for manual installation:
-    - Unzip and put in *C:\Program Files (x86)\Arduino\libraries* (Windows x64)
-    - Unzip and put in *C:\Program Files\Arduino\libraries* (Windows x32)
-    - Unpack and put in *Documents/Arduino/libraries/*
-    - (Arduino IDE) automatic installation from .zip: *Sketch/Include library/Add .ZIP library…* and specify the downloaded archive
-- Read more detailed instructions for installing libraries [here] (https://alexgyver.ru/arduino-first/#%D0%A3%D1%81%D1%82Cranberries D1%82%D0%B5%D0%BA)
+- The library can be found by the name ** gparser ** and installed through the library manager in:
+    - Arduino ide
+    - Arduino ide v2
+    - Platformio
+- [download the library] (https://github.com/gyverlibs/gparser/archive/refs/heads/main.zip) .Zip archive for manual installation:
+    - unpack and put in * C: \ Program Files (X86) \ Arduino \ Libraries * (Windows X64)
+    - unpack and put in * C: \ Program Files \ Arduino \ Libraries * (Windows X32)
+    - unpack and put in *documents/arduino/libraries/ *
+    - (Arduino id) Automatic installation from. Zip: * sketch/connect the library/add .Zip library ... * and specify downloaded archive
+- Read more detailed instructions for installing libraries [here] (https://alexgyver.ru/arduino-first/#%D0%A3%D1%81%D1%82%D0%B0%BD%D0%BE%BE%BE%BED0%B2%D0%BA%D0%B0_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA)
+### Update
+- I recommend always updating the library: errors and bugs are corrected in the new versions, as well as optimization and new features are added
+- through the IDE library manager: find the library how to install and click "update"
+- Manually: ** remove the folder with the old version **, and then put a new one in its place.“Replacement” cannot be done: sometimes in new versions, files that remain when replacing are deleted and can lead to errors!
 
-<a id="init"></a>
-## Initialization
-```cpp
-// pass char array a string, you can specify a separator character (default ',')
-GParser(char*data);
-GParser (char* data, char newDiv = ',');
-```
 
-<a id="usage"></a>
+<a id="init"> </a>
+## initialization
+`` `CPP
+// Transfer Char Array a line, you can specify the Symbol Separate (by the silence ',')
+GParser (Char* Data);
+Gparser (Char* Data, Char Newdiv = ',');
+`` `
+
+<a id="usage"> </a>
 ## Usage
-### GParser class
-```cpp
-void setDiv(char newDiv); // specify separator character
-void clear(); // free buffer
-int amount(); // amount of split data in the packet
-int split(); // split the string into substrings
-int16_t getInt(int num); // get an int from the selected substring
-float getFloat(int num); // get a float from the selected substring
-bool equals(int num, const char* comp); // compare substring with another string
-int parseInts(int*data); // parse into ints
-int parseBytes(byte*data); // parse into bytes
-void restore(); // restore the original form of the string (return separators)
-```
+### class GParser
+`` `CPP
+VOID Setdiv (Char Newdiv);// specify the Symbol Separate
+Void Clear ();// Free the buffer
+int amount ();// The number of data separated in the package
+int split ();// divide the line into tunes
+int32_t getint (int num);// Get Inta from the selected tack
+Float getfloat (int num);// Get Float from the selected toll
+Bool Equals (int num, const char* comp);// Compare the tuning with another line
+int Parsebytes (byte* data);// Parish bytes
+int parseints (int* data);// Parisulate on Ints
+Intselongs (LONG* DATA);// Parish on Longs
+VOID restore ();// Restore the original type of line (return the dividers)
+`` `
 
-### Separate parsing functions
-See example **testUtils**
+### Separate Parsing Functions
+See example ** testils **
 
-```cpp
-// number of substrings in the list list with div separator
-uint8_t GP_listSize(char* list, char div = ',');
+`` `CPP
+// Number of tuning in the list list with DIV separator
+uint8_t gp_listsize (char* list, char div = ',');
 
-// split list with div delimiter into substrings (see example)
-char* GP_splitList(char* list, char div = ',');
+// Divide the list of LIST with the DIV separator into tunes (see example)
+Char* gp_splitlist (char* list, char div = ',');
 
-// get the number under which name is included in the list with a separator div. -1 if not included
-int8_t GP_inList(char* name, char* list, char div = ',');
+// Get a number under which NAME is included in LIST with the DIV separator.-1 if not included
+int8_t gp_inlist (char* name, char* list, char div = ',');
 
-// convert int to string (3-10 times faster than ltoa + base)
-void GP_numToChar(int32_t n, char* buf, uint8_t base);
+// Transform int into a line (it works 3-10 times faster LTOA + base)
+VOID gp_numtochar (int32_t n, char* buf, uint8_t base);
 
-// convert float to string
-void GP_floatToChar(double f, char *buf, uint8_t decimals);
+// Transform Float into a line
+VOID gp_floattoChar (Double F, Char *Buf, Uint8_T Decimals);
 
-// convert string to number
-int32_t GP_charToNum(char* buf, uint8_t base);
+// Transfer the line to the number
+int32_t gp_Chartonum (char* buf, uint8_t base);
 
-// convert string to float
-double GP_charToFloat(char*buf);
+// Transform the line into Float
+Double gp_Chartofloat (Char* buf);
 
-// get the number at index idx in the list list with a div separator
-int GP_numFromList(char* list, int idx, char div = ',');
+// Get the number under the IDX index in the list list with the DIV separator
+Ints_numfromlist (Char* List, Intx, Char Div = ',');
 
-// rewrite list list with delimiterdiv into an array of numbers data with size size
-uint8_t GP_listToNum(char* list, int* data, uint8_t size, char div = ',');
+// Re -rewrite the list of LIST with the DIV separator in the DATA size array of SIZE
+uint8_t gp_listonum (char* list, int* data, uint8_t size, char div = ',');
 
-// convert text color (0x, #) to number
-uint32_t GP_decodeColor(char* hex);
-```
+// Transfer text color (0x, #) to the number
+uint32_t gp_decodecolor (char* hex);
+`` `
 
-<a id="example"></a>
+### Unicode
+See example ** testicode **
+
+`` `CPP
+Char* gp_unencode (int32_t c, char* s);// Unicode code in Char [5]
+String gp_unencode (uint16_t c);// Unicode code in String
+uint16_t gp_unistrlen (char* data);// UNICODE Length Line in the number of symbols
+`` `
+
+### url encode/decode
+See example ** Testurb **
+
+`` `CPP
+VOID gp_urlencode (Constation String & S, String & Dest);// Urlencode from String to String
+String gp_urlencode (const string & s);// Urlencode from String to String (Return)
+String GP_urldecode (Constation String & S, String & Dest);// urlDecode from String in String
+String GP_urldecode (Const String & S);// urldecode from String to String (Return)
+`` `
+
+<a id="EXAMPLE"> </a>
 ## Example
-See **examples** for other examples!
-```cpp
-// string parser test
-#include <GParser.h>
+The rest of the examples look at ** Examples **!
+`` `CPP
+// Parser's Test
+#include <gparser.h>
 
-void setup() {
-  Serial.begin(9600);
+VOID setup () {
+  Serial.Begin (9600);
 
-  // ==================== EXAMPLE 1 ======================
-  // example string
-  // data is separated by a delimiter, such as a comma
-  // can be obtained from Serial/UDP/TCP/MQTT etc
-  char str[] = "1234,3.14,hello,4567,lolkek,qwerty";
+  // =======================================================
+  // Line for example
+  // Data is separated by a divider, for example, a comma
+  // can be obtained from Serial/UDP/TCP/MQTT etc.
+  Char Str [] = "1234.3.14, Hello, 4567, Lolkek, Qwerty";
 
-  // feed the string to the parser, specify the separator (default comma)
-  GParser data(str, ',');
+  // feed the line of the parser, indicate the separator (silence)
+  Gparser data (str, ',');
 
-  // split
-  // ATTENTION! The operation "breaks" the string, replacing the delimiters with NULL
-  intam = data.split();
-  // get the amount of data
+  // Share
+  // ATTENTION!The operation "breaks" the line, replacing the dividers with NULL
+  int am = data.split ();
+  // Get the amount of data
 
-  Serial println(am); // display the amount
+  Serial.println (AM);// We display the quantity
 
-  // we can refer to the received strings as data[i] or data.str[i]
-  for (byte i = 0; i < am; i++) Serial.println(data[i]);
+  // We can turn to the resulting lines as Data [i] or Data.str [i]
+  for (byte i = 0; i <am; i ++) serial.println (Data [i]);
 
-  // you can also get them as int and float numbers
-  // passing the row index
-  Serial.println(data.getInt(0));
-  Serial.println(data.getFloat(1));
+  // You can also get them in the form of int and float numbers
+  // Passing the line index
+  Serial.println (Data.getint (0));
+  Serial.println (Data.getfloat (1));
 
-  // can be compared with a string (line pars number, string to compare)
-  if (data. equals(2, "hello")) Serial. println("true");
-  else Serial.println("false");
+  // can be compared with a string (number of a row, line for comparison)
+  if.equals (2, "Hello")) serial.println ("true");
+  Else serial.println ("false");
   
-  Serial.println();
+  Serial.println ();
   
-  // ==================== EXAMPLE 2 ======================
-  // fast parsing of delimited integer data
-  char str2[] ​​= "123,456,789,222,333,444";
-  GParserdata2(str2); // feed the string to the parser
+  // ========================================================
+  // Fast Parsing of integer data with the divider
+  char str2 [] = "123,456,789,22,333,444";
+  GParser DATA2 (STR2);// feed the line Parser
 
-  // create an array with the number of cells data2.amount() - how much data is in the package
-  int ints[data2.amount()];
+  // Create an array with the number of cells Data2.amount () - so much data in the package
+  int inti [data2.amount ()];
   
-  int am2 = data2.parseInts(ints); // scatters into the specified array and returns the amount
-  // actually here am2 == data2.amount() - amount of data
-  // output
-  for (byte i = 0; i < am; i++) Serial.println(ints[i]);
+  int am2 = data2.parseints (ints);// spreads to the specified array and will return the number
+  // actually here am2 == Data2.amount () - the amount of data
+  // Display
+  for (byte i = 0; i <am; i ++) serial.println (ints [i]);
 }
 
-void loop() {
+VOID loop () {
 }
 
-```
+`` `
 
-<a id="versions"></a>
-## Versions
-- v1.0
-- v1.1 - added separate tools forCranberries for parsing
-- v1.2 - added more parsing tools
-- v1.3 - added the ability to restore the string
-- v1.3.1 - fix warning
+<a id="versions"> </a>
+## versions
+- V1.0
+- V1.1 - added individual parsing tools
+- V1.2 - Parsing tools added more tools
+- v1.3 - added the ability to restore the line
+- V1.3.1 - Fix Warning
+- v1.4 - added URL and Unicode coding
+- V1.5 - Getint now returns int32_t
 
-<a id="feedback"></a>
-## Bugs and feedback
-When you find bugs, create an **Issue**, or better, immediately write to the mail [alex@alexgyver.ru](mailto:alex@alexgyver.ru)
-The library is open for revision and your **Pull Request**'s!
+<a id="feedback"> </a>
+## bugs and feedback
+Create ** Issue ** when you find bugs, but better immediately write to the mail [alex@alexgyver.ru] (mailto: alex@alexgyver.ru)
+The library is open for refinement and your ** pull Request ** 'ow!
+
+
+When reporting about bugs or incorrect work of the library, it is necessary to indicate:
+- The version of the library
+- What is MK used
+- SDK version (for ESP)
+- version of Arduino ide
+- whether the built -in examples work correctly, in which the functions and designs are used, leading to a bug in your code
+- what code has been loaded, what work was expected from it and how it works in reality
+- Ideally, attach the minimum code in which the bug is observed.Not a canvas of a thousand lines, but a minimum code
